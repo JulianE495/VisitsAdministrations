@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace capaDatos
+{
+    public class cd_frVisitas
+    {
+        private cd_conexionDB conexion = new cd_conexionDB();
+
+        SqlCommand sql = new SqlCommand();
+        SqlDataReader reader;
+
+        public bool insertVisit(string vNombre, string vApellido, string vCorreo, string vCarrera, string vHoraEntrada, string vHoraSalida, string vEdificio, string vAula, byte[] vImage, string vMotivoVisita)
+        {
+            if (vNombre == "" || vApellido == "" || vCorreo == "" || vCarrera == "" || vHoraEntrada == "" || vHoraSalida == "" || vEdificio == "" || vAula == "" || vMotivoVisita == "")
+            {
+                return false;
+            }
+            else
+            {
+                sql.Connection = conexion.AbrirConexion();
+                sql.CommandText = "insertVisit";
+                sql.CommandType = CommandType.StoredProcedure;
+                sql.Parameters.AddWithValue("@Nombre", vNombre);
+                sql.Parameters.AddWithValue("@Apellido", vApellido);
+                sql.Parameters.AddWithValue("@Correo", vCorreo);
+                sql.Parameters.AddWithValue("@Carrera", vCarrera);
+                sql.Parameters.AddWithValue("@HoraEntrada", vHoraEntrada);
+                sql.Parameters.AddWithValue("@HoraSalida", vHoraSalida);
+                sql.Parameters.AddWithValue("@Edificio", vEdificio);
+                sql.Parameters.AddWithValue("@Aula", vAula);
+                sql.Parameters.AddWithValue("@vImage", vImage);
+                sql.Parameters.AddWithValue("@motivoVisita", vMotivoVisita);
+
+                reader = sql.ExecuteReader();
+                return true;
+                conexion.CerrarConexion();
+            }
+        }
+
+        public void validacionRol()
+        {
+            if (cd_userCache.IdRol == 0)
+            {
+                //blablabla
+            }
+            if (cd_userCache.IdRol == 1)
+            {
+                //blablabla
+            }
+        }
+    }
+}
