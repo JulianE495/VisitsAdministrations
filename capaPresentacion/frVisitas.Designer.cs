@@ -45,7 +45,7 @@
             this.lblHoraEntrada = new System.Windows.Forms.Label();
             this.lblHoraSalida = new System.Windows.Forms.Label();
             this.dtpHoraSalida = new System.Windows.Forms.DateTimePicker();
-            this.cbMotivoSalida = new System.Windows.Forms.ComboBox();
+            this.cbMotivoVisita = new System.Windows.Forms.ComboBox();
             this.lblAula = new System.Windows.Forms.Label();
             this.cbAula = new System.Windows.Forms.ComboBox();
             this.lblMotivoVisita = new System.Windows.Forms.Label();
@@ -158,22 +158,6 @@
             this.cbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCarrera.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbCarrera.FormattingEnabled = true;
-            this.cbCarrera.Items.AddRange(new object[] {
-            "Analítica y Ciencia de los Datos",
-            "Desarrollo de Software",
-            "Diseño Industrial",
-            "Energías Renovables",
-            "Informática Forense",
-            "Inteligencia Artificial",
-            "Manufactura Automatizada",
-            "Manufactura de Dispositivos Médicos",
-            "Mecatrónica",
-            "Multimedia",
-            "Redes de Información",
-            "Seguridad Informática",
-            "Simulaciones interactivas y Videojuegos",
-            "Sonido",
-            "Telecomunicaciones"});
             this.cbCarrera.Location = new System.Drawing.Point(262, 177);
             this.cbCarrera.Name = "cbCarrera";
             this.cbCarrera.Size = new System.Drawing.Size(225, 30);
@@ -210,11 +194,6 @@
             this.cbEdificio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEdificio.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEdificio.FormattingEnabled = true;
-            this.cbEdificio.Items.AddRange(new object[] {
-            "Edificio 1",
-            "Edificio 2",
-            "Edificio 3",
-            "Edificio 4"});
             this.cbEdificio.Location = new System.Drawing.Point(396, 213);
             this.cbEdificio.Name = "cbEdificio";
             this.cbEdificio.Size = new System.Drawing.Size(91, 30);
@@ -265,21 +244,17 @@
             this.dtpHoraSalida.TabIndex = 19;
             this.dtpHoraSalida.Value = new System.DateTime(2022, 12, 9, 16, 17, 0, 0);
             // 
-            // cbMotivoSalida
+            // cbMotivoVisita
             // 
-            this.cbMotivoSalida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbMotivoVisita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbMotivoSalida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMotivoSalida.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbMotivoSalida.FormattingEnabled = true;
-            this.cbMotivoSalida.Items.AddRange(new object[] {
-            "Clases",
-            "Talleres",
-            "Conferencias"});
-            this.cbMotivoSalida.Location = new System.Drawing.Point(222, 282);
-            this.cbMotivoSalida.Name = "cbMotivoSalida";
-            this.cbMotivoSalida.Size = new System.Drawing.Size(265, 30);
-            this.cbMotivoSalida.TabIndex = 22;
+            this.cbMotivoVisita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMotivoVisita.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbMotivoVisita.FormattingEnabled = true;
+            this.cbMotivoVisita.Location = new System.Drawing.Point(222, 282);
+            this.cbMotivoVisita.Name = "cbMotivoVisita";
+            this.cbMotivoVisita.Size = new System.Drawing.Size(265, 30);
+            this.cbMotivoVisita.TabIndex = 22;
             // 
             // lblAula
             // 
@@ -344,7 +319,7 @@
             this.Controls.Add(this.lblMotivoVisita);
             this.Controls.Add(this.cbAula);
             this.Controls.Add(this.lblAula);
-            this.Controls.Add(this.cbMotivoSalida);
+            this.Controls.Add(this.cbMotivoVisita);
             this.Controls.Add(this.lblHoraSalida);
             this.Controls.Add(this.dtpHoraSalida);
             this.Controls.Add(this.lblHoraEntrada);
@@ -391,7 +366,7 @@
         private Label lblHoraEntrada;
         private Label lblHoraSalida;
         private DateTimePicker dtpHoraSalida;
-        private ComboBox cbMotivoSalida;
+        private ComboBox cbMotivoVisita;
         private Label lblAula;
         private ComboBox cbAula;
         private Label lblMotivoVisita;

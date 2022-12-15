@@ -17,6 +17,10 @@ namespace capaPresentacion
         public frVisitas()
         {
             InitializeComponent();
+            listarEdificios();
+            listarAulas();
+            listarCarreras();
+            listarMotivoVisita();
         }
         private void limpiarCampos()
         {
@@ -27,42 +31,68 @@ namespace capaPresentacion
             dtpHoraEntrada.Text = "";
             dtpHoraSalida.Text = "";
             // Inicio - Limpiar comboBox Edificio
-            cbEdificio.Items.Clear();
-            cbEdificio.Items.Add("Edificio 1");
-            cbEdificio.Items.Add("Edificio 2");
-            cbEdificio.Items.Add("Edificio 3");
-            cbEdificio.Items.Add("Edificio 4");
+            listarEdificios();
             // Final - Limpiar comboBox Edificio
 
+            // Inicio - Limpiar comboBox Aula
+            listarAulas();
+            // Fin - Limpiar comboBox Aula
+
             // Inicio - Limpiar comboBox Carreras
-            cbCarrera.Items.Clear();
-            cbCarrera.Items.Add("Analítica y Ciencia de los Datos");
-            cbCarrera.Items.Add("Desarrollo de Software");
-            cbCarrera.Items.Add("Diseño Industrial");
-            cbCarrera.Items.Add("Energías Renovables");
-            cbCarrera.Items.Add("Informática Forense");
-            cbCarrera.Items.Add("Inteligencia Artificial");
-            cbCarrera.Items.Add("Manufactura Automatizada");
-            cbCarrera.Items.Add("Manufactura de Dispositivos Médicos");
-            cbCarrera.Items.Add("Mecatrónica");
-            cbCarrera.Items.Add("Multimedia");
-            cbCarrera.Items.Add("Redes de Información");
-            cbCarrera.Items.Add("Seguridad Informática");
-            cbCarrera.Items.Add("Simulaciones interactivas y Videojuegos");
-            cbCarrera.Items.Add("Sonido");
-            cbCarrera.Items.Add("Telecomunicaciones");
+            listarCarreras();
             // Final - Limpiar comboBox Carreras
 
             // Inicio - Limpiar comboBox MotivoDeVisita
-            cbMotivoSalida.Items.Clear();
-            cbMotivoSalida.Items.Add("Clases");
-            cbMotivoSalida.Items.Add("Talleres");
-            cbMotivoSalida.Items.Add("Conferencias");
+            listarMotivoVisita();
             // Final - Limpiar comboBox MotivoDeVisita
+        }
+        private void listarEdificios()
+        {
+            cd_frVisitas edificios = new cd_frVisitas();
+            cbEdificio.DataSource = edificios.selectEdificio();
+            cbEdificio.DisplayMember = "Edificio";
+            cbEdificio.ValueMember = "Edificio";
+          
+        }
+        private void listarAulas()
+        {
+            int idEdificio = 1;
+            if (cbEdificio.Text == "Edificio 1")
+            {
+                idEdificio = 1;
+            }
+            else if (cbEdificio.Text == "Edificio 2")
+            {
+                idEdificio = 2;
+            }
+            else if (cbEdificio.Text == "Edificio 3")
+            {
+                idEdificio = 3;
+            }
+            else if (cbEdificio.Text == "Edificio 4")
+            {
+                idEdificio = 4;
+            }
 
-            // Inicio - Limpiar comboBox Aula
-            cbAula.Items.Clear();
-            // Final - Limpiar comboBox Aula
+            cp_visitModel visitModel = new cp_visitModel();
+            cbAula.DataSource = visitModel.listarAulas(idEdificio);
+            cbAula.DisplayMember = "Aula";
+            cbAula.ValueMember = "Aula";
+        }
+        private void listarCarreras()
+        {
+            cd_frVisitas carreras = new cd_frVisitas();
+            cbCarrera.DataSource = carreras.selectCarrera();
+            cbCarrera.DisplayMember = "Carrera";
+            cbCarrera.ValueMember = "Carrera";
+        }
+
+        private void listarMotivoVisita()
+        {
+            cd_frVisitas motivoVisitas = new cd_frVisitas();
+            cbMotivoVisita.DataSource = motivoVisitas.selectMotivoVisita();
+            cbMotivoVisita.DisplayMember = "Motivo";
+            cbMotivoVisita.ValueMember = "Motivo";
         }
         private void btnGuardarVisita_Click(object sender, EventArgs e)
         {
@@ -74,7 +104,7 @@ namespace capaPresentacion
             string horaSalida = dtpHoraSalida.Text;
             string edificio = cbEdificio.Text;
             string aula = cbAula.Text;
-            string motivoVisita = cbMotivoSalida.Text;
+            string motivoVisita = cbMotivoVisita.Text;
 
             byte[] image = File.ReadAllBytes(pbUserPhoto.ImageLocation);
 
@@ -111,81 +141,10 @@ namespace capaPresentacion
                 pbUserPhoto.Tag = "Si";
             }
         }
-
-        private void cbEdificio_TextChanged(object sender, EventArgs e)
-        {
-            if (cbEdificio.Text == "Edificio 1")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("1-1A");
-                cbAula.Items.Add("1-1B");
-                cbAula.Items.Add("1-1C");
-                cbAula.Items.Add("1-2A");
-                cbAula.Items.Add("1-2B");
-                cbAula.Items.Add("1-2C");
-            }
-            else if (cbEdificio.Text == "Edificio 2")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("2-2A");
-                cbAula.Items.Add("2-2B");
-                cbAula.Items.Add("2-2C");
-            }
-            if (cbEdificio.Text == "Edificio 3")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("Taller de controles");
-                cbAula.Items.Add("Taller Manufactura");
-                cbAula.Items.Add("Taller CNC");
-            }
-            if (cbEdificio.Text == "Edificio 4")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("4-2A");
-                cbAula.Items.Add("4-2B");
-                cbAula.Items.Add("4-2C");
-                cbAula.Items.Add("4-2D");
-                cbAula.Items.Add("4-2E");
-                cbAula.Items.Add("4-2F");
-            }
-        }
-
+        
         private void cbEdificio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbEdificio.Text == "Edificio 1")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("1-1A");
-                cbAula.Items.Add("1-1B");
-                cbAula.Items.Add("1-1C");
-                cbAula.Items.Add("1-2A");
-                cbAula.Items.Add("1-2B");
-                cbAula.Items.Add("1-2C");
-            }
-            else if (cbEdificio.Text == "Edificio 2")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("2-2A");
-                cbAula.Items.Add("2-2B");
-                cbAula.Items.Add("2-2C");
-            }
-            if (cbEdificio.Text == "Edificio 3")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("Taller de controles");
-                cbAula.Items.Add("Taller Manufactura");
-                cbAula.Items.Add("Taller CNC");
-            }
-            if (cbEdificio.Text == "Edificio 4")
-            {
-                cbAula.Items.Clear();
-                cbAula.Items.Add("4-2A");
-                cbAula.Items.Add("4-2B");
-                cbAula.Items.Add("4-2C");
-                cbAula.Items.Add("4-2D");
-                cbAula.Items.Add("4-2E");
-                cbAula.Items.Add("4-2F");
-            }
+            listarAulas();
         }
     }
 }

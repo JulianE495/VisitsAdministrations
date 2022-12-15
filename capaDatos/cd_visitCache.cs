@@ -19,5 +19,6 @@ namespace capaDatos
         public static string Aula { get; set; }
         public static byte[] Image { get; set; }
         public static string motivoVisita { get; set; }
+        public static int idEdificio { get; set; }
     }
 }

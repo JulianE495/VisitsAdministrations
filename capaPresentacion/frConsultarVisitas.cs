@@ -1,4 +1,5 @@
-﻿using capaNegocios;
+﻿using capaDatos;
+using capaNegocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace capaPresentacion
             InitializeComponent();
             tableDesign();
             mostrarVisits();
+            listarEdificios();
         }
         private void tableDesign()
         {
@@ -29,6 +31,13 @@ namespace capaPresentacion
         {
             cn_consultarVisits tabla = new cn_consultarVisits();
             dgvTableVisits.DataSource = tabla.MostrarVisitTable();
+        }
+        private void listarEdificios()
+        {
+            cd_frVisitas edificios = new cd_frVisitas();
+            cbEdificio.DataSource = edificios.selectEdificio();
+            cbEdificio.DisplayMember = "Edificio";
+            cbEdificio.ValueMember = "Edificio";
         }
 
         private void cbEdificio_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,11 +53,8 @@ namespace capaPresentacion
             dgvTableVisits.DataSource = tabla.MostrarVisitTable();
 
             // Inicio - Limpiar comboBox Edificio
-            cbEdificio.Items.Clear();
-            cbEdificio.Items.Add("Edificio 1");
-            cbEdificio.Items.Add("Edificio 2");
-            cbEdificio.Items.Add("Edificio 3");
-            cbEdificio.Items.Add("Edificio 4");
+            cbEdificio.Text = "";
+            listarEdificios();
             // Final - Limpiar comboBox Edificio
         }
     }

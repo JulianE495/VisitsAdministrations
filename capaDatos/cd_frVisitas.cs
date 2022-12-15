@@ -43,6 +43,51 @@ namespace capaDatos
             }
         }
 
+        public DataTable selectEdificio()
+        {
+            DataTable edificios = new DataTable();
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectEdificio";
+            sql.CommandType = CommandType.StoredProcedure;
+            reader = sql.ExecuteReader();
+            edificios.Load(reader);
+            conexion.CerrarConexion();
+            return edificios;
+        }
+        public DataTable selectAula(int IDEdificio)
+        {
+            DataTable aulas = new DataTable();
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectAula";
+            sql.CommandType = CommandType.StoredProcedure;
+            sql.Parameters.AddWithValue("@Edificio", IDEdificio);
+            reader = sql.ExecuteReader();
+            aulas.Load(reader);
+            conexion.CerrarConexion();
+            return aulas;
+        }
+        public DataTable selectCarrera()
+        {
+            DataTable carreras = new DataTable();
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectCarreras";
+            sql.CommandType = CommandType.StoredProcedure;
+            reader = sql.ExecuteReader();
+            carreras.Load(reader);
+            conexion.CerrarConexion();
+            return carreras;
+        }
+        public DataTable selectMotivoVisita()
+        {
+            DataTable motivoVisita = new DataTable();
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectMotivoVisita";
+            sql.CommandType = CommandType.StoredProcedure;
+            reader = sql.ExecuteReader();
+            motivoVisita.Load(reader);
+            conexion.CerrarConexion();
+            return motivoVisita;
+        }
         public void validacionRol()
         {
             if (cd_userCache.IdRol == 0)

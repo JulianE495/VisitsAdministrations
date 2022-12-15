@@ -39,5 +39,16 @@ namespace capaDatos
             conexion.CerrarConexion();
             return tablaVisits;
         }
+        public DataTable selectEdificio()
+        {
+            DataTable edificios = new DataTable();
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectEdificio";
+            sql.CommandType = CommandType.StoredProcedure;
+            reader = sql.ExecuteReader();
+            edificios.Load(reader);
+            conexion.CerrarConexion();
+            return edificios;
+        }
     }
 }
