@@ -18,6 +18,18 @@ namespace capaPresentacion
         {
             InitializeComponent();
             loadUserData();
+            if (cd_userCache.IdRol == 0)
+            {
+                btnVisitas.Enabled = true;
+                btnConsultarVisitas.Enabled = true;
+                btnAgregarUser.Enabled = true;
+            }
+            if (cd_userCache.IdRol == 1)
+            {
+                btnVisitas.Enabled = true;
+                btnConsultarVisitas.Enabled = false;
+                btnAgregarUser.Enabled = false;
+            }
         }
         private Form formularioActivo = null;
         private void abrirFomularioHijo(Form formularioHijo)
