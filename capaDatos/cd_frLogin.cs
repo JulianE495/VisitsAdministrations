@@ -43,6 +43,8 @@ namespace capaDatos
                     cd_userCache.LastName = reader.GetString(4);
                     cd_userCache.IdRol = reader.GetInt32(5);
                     cd_userCache.Rol = reader.GetString(6);
+                    cd_userCache.dob = reader.GetString(7);
+                    cd_userCache.image = (byte[])reader.GetValue(8);
 
                 }
                 return true;

@@ -37,9 +37,19 @@ namespace capaPresentacion
         }
 
         private void loadUserData()
-            {
+            {   
                 lblUser.Text = cd_userCache.Name;
                 lblRol.Text = cd_userCache.Rol;
+                byte[] imgData = (byte[])cd_userCache.image;
+                Image newImage = null;
+                using (MemoryStream ms = new MemoryStream(imgData, 0, imgData.Length))
+                {
+                    ms.Write(imgData, 0, imgData.Length);
+                    newImage = Image.FromStream(ms, true);
+                }
+                pbProfile.Image = newImage;
+                pbProfile.SizeMode = PictureBoxSizeMode.StretchImage;
+
             }
 
         private void btnVisitas_Click(object sender, EventArgs e)
@@ -50,6 +60,11 @@ namespace capaPresentacion
         private void btnConsultarVisitas_Click(object sender, EventArgs e)
         {
             abrirFomularioHijo(new frConsultarVisitas());
+        }
+
+        private void btnAgregarUser_Click(object sender, EventArgs e)
+        {
+            abrirFomularioHijo(new frAgregarUsuarios());
         }
     }
 }

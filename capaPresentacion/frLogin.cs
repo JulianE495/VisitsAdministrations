@@ -20,7 +20,7 @@ namespace capaPresentacion
             string pass = cd_encryptPass.GetSHA256(txtPassword.Text.Trim());
  
 
-            if (txtUser.Text != "Username" && txtUser.TextLength > 2)
+            if (txtUser.Text != "Username")
             {
                 if (txtPassword.Text != "Password")
                 {

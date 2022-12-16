@@ -37,6 +37,7 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.pnMain = new System.Windows.Forms.Panel();
+            this.btnAgregarUser = new System.Windows.Forms.Button();
             this.pnLeftMenu.SuspendLayout();
             this.pnTopMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
@@ -44,6 +45,7 @@
             // 
             // pnLeftMenu
             // 
+            this.pnLeftMenu.Controls.Add(this.btnAgregarUser);
             this.pnLeftMenu.Controls.Add(this.btnConsultarVisitas);
             this.pnLeftMenu.Controls.Add(this.btnVisitas);
             this.pnLeftMenu.Controls.Add(this.pnTopMenu);
@@ -67,8 +69,7 @@
             this.btnConsultarVisitas.Name = "btnConsultarVisitas";
             this.btnConsultarVisitas.Size = new System.Drawing.Size(204, 43);
             this.btnConsultarVisitas.TabIndex = 2;
-            this.btnConsultarVisitas.Text = "Consultar Visitas";
-            this.btnConsultarVisitas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConsultarVisitas.Text = "   Consultar Visitas";
             this.btnConsultarVisitas.UseVisualStyleBackColor = false;
             this.btnConsultarVisitas.Click += new System.EventHandler(this.btnConsultarVisitas_Click);
             // 
@@ -139,6 +140,24 @@
             this.pnMain.Size = new System.Drawing.Size(510, 461);
             this.pnMain.TabIndex = 1;
             // 
+            // btnAgregarUser
+            // 
+            this.btnAgregarUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
+            this.btnAgregarUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAgregarUser.FlatAppearance.BorderSize = 0;
+            this.btnAgregarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarUser.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAgregarUser.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarUser.Image = global::capaPresentacion.Properties.Resources.icons8_add_user_male_24px;
+            this.btnAgregarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarUser.Location = new System.Drawing.Point(0, 177);
+            this.btnAgregarUser.Name = "btnAgregarUser";
+            this.btnAgregarUser.Size = new System.Drawing.Size(204, 43);
+            this.btnAgregarUser.TabIndex = 3;
+            this.btnAgregarUser.Text = "  Añadir Usuario";
+            this.btnAgregarUser.UseVisualStyleBackColor = false;
+            this.btnAgregarUser.Click += new System.EventHandler(this.btnAgregarUser_Click);
+            // 
             // frMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -170,5 +189,6 @@
         private Button btnVisitas;
         private Button btnConsultarVisitas;
         private Panel pnMain;
+        private Button btnAgregarUser;
     }
 }

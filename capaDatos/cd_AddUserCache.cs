@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace capaDatos
 {
-    public static class cd_userCache
+    public class cd_AddUserCache
     {
-        public static int IdUser { get; set; }
-        public static string LoginName { get; set; }
+        public static int User { get; set; }
         public static string Password { get; set; }
         public static string Name { get; set; }
         public static string LastName { get; set; }
+        public static string DateOfBirth { get; set; }
         public static int IdRol { get; set; }
         public static string Rol { get; set; }
-        public static string dob { get; set; }
-        public static byte[] image { get; set; }
-
+        public static byte ProfilePhoto { get; set; } 
     }
-
-
 }
