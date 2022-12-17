@@ -108,6 +108,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(225, 30);
             this.txtNombre.TabIndex = 7;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtApellido
             // 
@@ -118,6 +119,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(225, 30);
             this.txtApellido.TabIndex = 9;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblApellido
             // 
@@ -139,6 +141,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(225, 30);
             this.txtCorreo.TabIndex = 11;
+            this.txtCorreo.Leave += new System.EventHandler(this.txtCorreo_Leave);
             // 
             // lblCorreo
             // 
@@ -340,7 +343,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(494, 422);
             this.Name = "frVisitas";
-            this.Text = "Form1";
+            this.Text = "Registrar Visitas";
             ((System.ComponentModel.ISupportInitialize)(this.pbUserPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,7 +13,16 @@ namespace capaPresentacion
             InitializeComponent();
 
         }
-       
+
+        private void validarTexto(KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo se permiten letras", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -38,7 +47,7 @@ namespace capaPresentacion
                     }
                     else
                     {
-                        MessageBox.Show("Nombre y/o Contraseña incorrecta. \n Inténtelo de nuevo, por favor.");
+                        MessageBox.Show("Nombre y/o Contraseña incorrecta. \nInténtelo de nuevo, por favor.");
                         txtPassword.Text = "Contraseña";
                         txtPassword.UseSystemPasswordChar = false;
                         txtPassword.Focus();
@@ -83,6 +92,11 @@ namespace capaPresentacion
                 btnShowPass.Visible = true;
                 btnHidePass.Visible = false;
             }
+        }
+
+        private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarTexto(e);
         }
     }
 }

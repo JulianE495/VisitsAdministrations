@@ -14,6 +14,7 @@ namespace capaDatos
 
         SqlCommand sql = new SqlCommand();
         SqlDataReader reader;
+        DataTable tablaUsers = new DataTable();
 
         public bool insertUser(string User, string Pass, string Nombre, string Apellido, int idRol, string Rol, string DOB, byte[] fotoPerfil)
         {
@@ -39,6 +40,17 @@ namespace capaDatos
                 return true;
                 conexion.CerrarConexion();
             }
+        }
+
+        public DataTable selectUsers()
+        {
+            sql.Connection = conexion.AbrirConexion();
+            sql.CommandText = "selectUsuarios";
+            sql.CommandType = CommandType.StoredProcedure;
+            reader = sql.ExecuteReader();
+            tablaUsers.Load(reader);
+            conexion.CerrarConexion();
+            return tablaUsers;
         }
     }
 }

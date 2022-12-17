@@ -23,12 +23,16 @@ namespace capaPresentacion
                 btnVisitas.Enabled = true;
                 btnConsultarVisitas.Enabled = true;
                 btnAgregarUser.Enabled = true;
+                btnEdificios.Enabled = true;
+                btnAulas.Enabled = true;
             }
             if (cd_userCache.IdRol == 1)
             {
                 btnVisitas.Enabled = true;
                 btnConsultarVisitas.Enabled = false;
                 btnAgregarUser.Enabled = false;
+                btnEdificios.Enabled = false;
+                btnAulas.Enabled = false;
             }
         }
         private Form formularioActivo = null;
@@ -77,6 +81,16 @@ namespace capaPresentacion
         private void btnAgregarUser_Click(object sender, EventArgs e)
         {
             abrirFomularioHijo(new frAgregarUsuarios());
+        }
+
+        private void btnEdificios_Click(object sender, EventArgs e)
+        {
+            abrirFomularioHijo(new frEdificios());
+        }
+
+        private void btnAulas_Click(object sender, EventArgs e)
+        {
+            abrirFomularioHijo(new frAulas());
         }
     }
 }

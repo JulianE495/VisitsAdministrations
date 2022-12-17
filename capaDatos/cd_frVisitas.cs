@@ -17,7 +17,7 @@ namespace capaDatos
 
         public bool insertVisit(string vNombre, string vApellido, string vCorreo, string vCarrera, string vHoraEntrada, string vHoraSalida, string vEdificio, string vAula, byte[] vImage, string vMotivoVisita)
         {
-            if (vNombre == "" || vApellido == "" || vCorreo == "" || vCarrera == "" || vHoraEntrada == "" || vHoraSalida == "" || vEdificio == "" || vAula == "" || vMotivoVisita == "")
+            if (vNombre == "" || vApellido == "" || vCorreo == "" || vCarrera == "" || vHoraEntrada == "" || vHoraSalida == "" || vEdificio == "" || vAula == "" || vMotivoVisita == "" || vImage == null)
             {
                 return false;
             }

@@ -58,6 +58,7 @@
             this.txtUser.PlaceholderText = "Usuario";
             this.txtUser.Size = new System.Drawing.Size(234, 30);
             this.txtUser.TabIndex = 0;
+            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUser_KeyPress);
             // 
             // txtPassword
             // 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.pbUserPhoto = new System.Windows.Forms.PictureBox();
@@ -44,7 +46,9 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.btnGuardarUser = new System.Windows.Forms.Button();
+            this.dgvTableUsers = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTableUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -56,6 +60,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(223, 30);
             this.txtNombre.TabIndex = 11;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblNombre
             // 
@@ -84,9 +89,9 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(12, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(180, 22);
+            this.lblTitulo.Size = new System.Drawing.Size(190, 22);
             this.lblTitulo.TabIndex = 8;
-            this.lblTitulo.Text = "Registar Usuarios";
+            this.lblTitulo.Text = "Registrar Usuarios";
             // 
             // btnAgregarFoto
             // 
@@ -112,6 +117,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(223, 30);
             this.txtApellido.TabIndex = 14;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblApellido
             // 
@@ -167,6 +173,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(223, 30);
             this.txtUsuario.TabIndex = 18;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // lblTipoUsuario
             // 
@@ -183,6 +190,7 @@
             // 
             this.cbTipoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoUsuario.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbTipoUsuario.FormattingEnabled = true;
             this.cbTipoUsuario.Items.AddRange(new object[] {
@@ -216,6 +224,8 @@
             // 
             // btnGuardarUser
             // 
+            this.btnGuardarUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardarUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
             this.btnGuardarUser.FlatAppearance.BorderSize = 0;
             this.btnGuardarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -229,12 +239,54 @@
             this.btnGuardarUser.UseVisualStyleBackColor = false;
             this.btnGuardarUser.Click += new System.EventHandler(this.btnGuardarUser_Click);
             // 
+            // dgvTableUsers
+            // 
+            this.dgvTableUsers.AllowUserToAddRows = false;
+            this.dgvTableUsers.AllowUserToDeleteRows = false;
+            this.dgvTableUsers.AllowUserToResizeColumns = false;
+            this.dgvTableUsers.AllowUserToResizeRows = false;
+            this.dgvTableUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTableUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTableUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvTableUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(51)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTableUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTableUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(51)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTableUsers.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTableUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(57)))));
+            this.dgvTableUsers.Location = new System.Drawing.Point(12, 298);
+            this.dgvTableUsers.Name = "dgvTableUsers";
+            this.dgvTableUsers.ReadOnly = true;
+            this.dgvTableUsers.RowHeadersVisible = false;
+            this.dgvTableUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvTableUsers.RowTemplate.Height = 25;
+            this.dgvTableUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTableUsers.ShowCellToolTips = false;
+            this.dgvTableUsers.Size = new System.Drawing.Size(479, 112);
+            this.dgvTableUsers.TabIndex = 30;
+            // 
             // frAgregarUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(36)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(494, 422);
+            this.Controls.Add(this.dgvTableUsers);
             this.Controls.Add(this.btnGuardarUser);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblContraseña);
@@ -254,8 +306,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(494, 422);
             this.Name = "frAgregarUsuarios";
-            this.Text = "frAgregarUsuarios";
+            this.Text = "Registrar Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.pbUserPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTableUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +332,6 @@
         private TextBox txtPass;
         private Label lblContraseña;
         private Button btnGuardarUser;
+        private DataGridView dgvTableUsers;
     }
 }
